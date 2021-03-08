@@ -1,0 +1,25 @@
+{
+  "name": "react extension",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "React extension boiler plate",
+  "icons": {
+    "512": "icon128.png"
+  },
+  "browser_action": {
+    "default_icon": "icon128.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["app/background.js"]
+  },
+  "content_scripts": [{
+    "all_frames": false,
+    "js": ["app/content.js"],
+    "matches": ["http://*/*", "https://*/*"],
+    "run_at": "document_end"
+  }],
+  "permissions": ["activeTab", "storage"],
+
+  "content_security_policy": "script-src 'self' https://freegeoip.live https://connect.facebook.net https://apis.google.com; object-src 'self'"
+}
